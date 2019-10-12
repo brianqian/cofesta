@@ -2,10 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  min-width: 100vw;
-  min-height: 100vh;
+  position: relative;
+  height: 80vh;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Home = () => <Container>HELLO WORLD</Container>;
+const HeroImage = styled.div`
+  background-image: url('/static/img/cup2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 90vw;
+  height: 100%;
+`;
+
+const Main = styled.main``;
+
+const Home = () => (
+  <Container>
+    <HeroImage>
+      <Main></Main>
+    </HeroImage>
+  </Container>
+);
 
 export default Home;

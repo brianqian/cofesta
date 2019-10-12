@@ -1,5 +1,5 @@
 interface HexCodes {
-  [index: number]: any;
+  [index: number]: string;
 }
 
 const theme = {
@@ -74,6 +74,26 @@ const theme = {
     blue8: '#2C5282',
     blue9: '#2A4365',
 
+    indigo1: '#EBF4FF',
+    indigo2: '#C3DAFE',
+    indigo3: '#A3BFFA',
+    indigo4: '#7F9CF5',
+    indigo5: '#667EEA',
+    indigo6: '#5A67D8',
+    indigo7: '#4C51BF',
+    indigo8: '#434190',
+    indigo9: '#3C366B',
+
+    purple1: '#FAF5FF',
+    purple2: '#E9D8FD',
+    purple3: '#D6BCFA',
+    purple4: '#B794F4',
+    purple5: '#9F7AEA',
+    purple6: '#805AD5',
+    purple7: '#6B46C1',
+    purple8: '#553C9A',
+    purple9: '#44337A',
+
     pink1: '#FFF5F7',
     pink2: '#FED7E2',
     pink3: '#FBB6CE',
@@ -83,6 +103,26 @@ const theme = {
     pink7: '#B83280',
     pink8: '#97266D',
     pink9: '#702459',
+
+    orange1: '#FFFAF0',
+    orange2: '#FEEBC8',
+    orange3: '#FBD38D',
+    orange4: '#F6AD55',
+    orange5: '#ED8936',
+    orange6: '#DD6B20',
+    orange7: '#C05621',
+    orange8: '#9C4221',
+    orange9: '#7B341E',
+
+    yellow1: '#FFFFF0',
+    yellow2: '#FEFCBF',
+    yellow3: '#FAF089',
+    yellow4: '#F6E05E',
+    yellow5: '#ECC94B',
+    yellow6: '#D69E2E',
+    yellow7: '#B7791F',
+    yellow8: '#975A16',
+    yellow9: '#744210',
   },
   // ORIGINAL VALUE bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
   bs: '0 12px 24px 0 rgba(0, 0, 0, 1)',
