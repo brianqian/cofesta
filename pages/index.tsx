@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Nav from '../components/nav';
 
 const Container = styled.div`
   position: relative;
@@ -17,6 +18,7 @@ const HeroImage = styled.div`
   background-size: cover;
   width: 90vw;
   height: 100%;
+  position: relative;
 `;
 
 const Main = styled.main``;
@@ -24,6 +26,7 @@ const Main = styled.main``;
 const Home = () => (
   <Container>
     <HeroImage>
+      <Nav />
       <Main></Main>
     </HeroImage>
   </Container>

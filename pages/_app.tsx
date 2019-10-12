@@ -1,7 +1,6 @@
 import App from 'next/app';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from '../utils/cssTheme';
-import Nav from '../components/nav';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
@@ -47,7 +46,6 @@ export default class MyApp extends App {
       <ThemeProvider theme={theme}>
         <Container>
           <GlobalStyle />
-          <Nav />
           <Component {...pageProps} />
         </Container>
       </ThemeProvider>
