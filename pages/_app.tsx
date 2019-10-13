@@ -1,12 +1,13 @@
 import App from 'next/app';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from '../utils/cssTheme';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Cabin|Cormorant+Garamond&display=swap');
 body, html{
   font-family: sans-serif;
   max-width: 100vw;
+  background-color: black;
 }
 *{
   margin: 0;
@@ -14,21 +15,11 @@ body, html{
   box-sizing: border-box;
 }
 a {
-  color: black;
+  color: white;
     :visited {
-      color:  black;
+      color:  white;
     }
-    text-decoration: none;
 }
-`;
-
-const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: ${({ theme }) => theme.changeOpacity(theme.tailwind.gray8, 90)};
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export default class MyApp extends App {
@@ -44,10 +35,10 @@ export default class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <ThemeProvider theme={theme}>
-        <Container>
+        <>
           <GlobalStyle />
           <Component {...pageProps} />
-        </Container>
+        </>
       </ThemeProvider>
     );
   }

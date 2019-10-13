@@ -6,24 +6,14 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
+  background-color: black;
   color: white;
-  position: absolute;
-  top: 50px;
-  left: 0;
   padding: 0 3rem;
   height: 60px;
-  & :before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    filter: blur(4px);
-    width: 100%;
-    height: 60px;
-    opacity: 0.3;
-    background-color: darkgray;
-  }
+  border-bottom: 1px solid red;
+  position: absolute;
+  top: 0;
+  z-index: 5;
 `;
 
 const Links = styled.ul`
@@ -42,7 +32,7 @@ const Links = styled.ul`
     cursor: pointer;
   }
   & .active {
-    color: red;
+    border-bottom: 2px solid white;
   }
 `;
 
@@ -65,7 +55,10 @@ const Nav = () => (
     </CompanyName>
     <Links>
       <li>
-        <a className="active">Hours/Location</a>
+        <a className="active">Home</a>
+      </li>
+      <li>
+        <a>Hours/Location</a>
       </li>
       <li>
         <a>Menu</a>
