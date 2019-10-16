@@ -5,9 +5,9 @@ import { theme } from '../utils/cssTheme';
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Raleway|Cabin|Cormorant+Garamond&display=swap');
 body, html{
-  font-family: sans-serif;
+  font-family: 'Cabin';
   max-width: 100vw;
-  background-color: black;
+  background-color: white;
 }
 *{
   margin: 0;
@@ -15,9 +15,9 @@ body, html{
   box-sizing: border-box;
 }
 a {
-  color: white;
+  color: black;
     :visited {
-      color:  white;
+      color:  black;
     }
 }
 `;

@@ -1,88 +1,80 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import Nav from '../components/nav';
-import Location from '../components/Location/Location';
+
+interface Props {
+  open?: boolean;
+}
 
 const Container = styled.div`
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    font-size: 40px;
+  }
 `;
 
-const Hero = styled.div`
-  position: relative;
-`;
-
-const HeroImage = styled.div`
-  display: block;
-  background-image: url('/static/img/cup2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100vw;
-  height: 800px;
-  position: relative;
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-`;
-
-const Main = styled.main`
-  background-color: transparent;
-  z-index: 3;
-  color: white;
-  grid-column: 2;
-  position: relative;
-`;
-
-const TextBox = styled.div`
-  margin: 3rem;
-  padding: 3rem;
-  height: 100%;
+const Content = styled.main`
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  & :before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    filter: blur(4px);
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  p {
-    z-index: 5;
-    font-family: 'Cormorant Garamond';
-    font-size: 22px;
-    margin-top: 20%;
-    /* border: 1px solid pink; */
+  padding-bottom: 150px;
+  header {
+    display: flex;
+    align-items: baseline;
+    h3 {
+      font-size: 18px;
+      margin: 0 0.5rem;
+    }
   }
 `;
 
-const Home = () => (
-  <Container>
-    <Nav />
-    <Hero>
-      <HeroImage>
-        <Main>
-          <TextBox>
-            <p>
-              Come enjoy a cup of coffee at your local Flatiron coffee shop. Here we pride ourselves
-              in high quality food and drinks. Try some of our signature dishes sourced fresh from
-              the local farmer's market or our{' '}
-              <a href="https://www.devocion.com/" target="_blank">
-                Devoción
-              </a>{' '}
-              cold-brew & espresso drinks.
-            </p>
-            <p> Join us for happy hour weekdays from 3-5pm.</p>
-          </TextBox>
-        </Main>
-      </HeroImage>
-      <Location />
-    </Hero>
-  </Container>
-);
+const Subcontent = styled.section`
+  height: ${(p: Props) => (p.open ? 400 : 0)}px;
+  overflow: hidden;
+  transition: all 0.25s ease-in;
+`;
+
+const Links = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+`;
+
+const Temp = styled.div`
+  height: 400px;
+  width: 200px;
+  background-color: blue;
+`;
+
+const Home = () => {
+  const [view, setView] = useState('home');
+  const handleClick = (e: any) => {
+    setView(e.target.dataset.id);
+  };
+  return (
+    <Container>
+      <Content>
+        <header>
+          <h1>COFESTA</h1>
+          <h3>33 w. 26th st.</h3>
+        </header>
+        <Links onClick={handleClick}>
+          <a data-id="about">about</a>
+          <a data-id="map">map</a>
+          <a data-id="menu">menu</a>
+          <a data-id="contact">contact</a>
+        </Links>
+        <Subcontent open={view !== 'home'}>
+          <Temp></Temp>
+        </Subcontent>
+      </Content>
+    </Container>
+  );
+};
 
 export default Home;
