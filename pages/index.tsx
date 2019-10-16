@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Nav from '../components/nav';
+import Location from '../components/Location/Location';
 
 const Container = styled.div`
   min-width: 100vw;
@@ -9,7 +10,12 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+const Hero = styled.div`
+  position: relative;
+`;
+
 const HeroImage = styled.div`
+  display: block;
   background-image: url('/static/img/cup2.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -57,22 +63,25 @@ const TextBox = styled.div`
 const Home = () => (
   <Container>
     <Nav />
-    <HeroImage>
-      <Main>
-        <TextBox>
-          <p>
-            Come enjoy a cup of coffee at your local Flatiron coffee shop. Here we pride ourselves
-            in high quality food and drinks. Try some of our signature dishes sourced fresh from the
-            local farmer's market or our{' '}
-            <a href="https://www.devocion.com/" target="_blank">
-              Devoción
-            </a>{' '}
-            cold-brew & espresso drinks.
-          </p>
-          <p> Join us for happy hour every day from 3-5pm.</p>
-        </TextBox>
-      </Main>
-    </HeroImage>
+    <Hero>
+      <HeroImage>
+        <Main>
+          <TextBox>
+            <p>
+              Come enjoy a cup of coffee at your local Flatiron coffee shop. Here we pride ourselves
+              in high quality food and drinks. Try some of our signature dishes sourced fresh from
+              the local farmer's market or our{' '}
+              <a href="https://www.devocion.com/" target="_blank">
+                Devoción
+              </a>{' '}
+              cold-brew & espresso drinks.
+            </p>
+            <p> Join us for happy hour weekdays from 3-5pm.</p>
+          </TextBox>
+        </Main>
+      </HeroImage>
+      <Location />
+    </Hero>
   </Container>
 );
 

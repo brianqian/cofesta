@@ -10,8 +10,8 @@ const NavBar = styled.nav`
   color: white;
   padding: 0 3rem;
   height: 60px;
-  border-bottom: 1px solid red;
-  position: absolute;
+  border-bottom: 1px solid #920000;
+  position: fixed;
   top: 0;
   z-index: 5;
 `;
@@ -64,7 +64,7 @@ const Nav = () => (
         <a>Menu</a>
       </li>
       <li>
-        <a>Coffee</a>
+        <a>Contact</a>
       </li>
     </Links>
   </NavBar>
