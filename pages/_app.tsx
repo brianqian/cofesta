@@ -7,7 +7,6 @@ const GlobalStyle = createGlobalStyle`
 body, html{
   font-family: 'Cabin';
   max-width: 100vw;
-  background-color: white;
 }
 *{
   margin: 0;

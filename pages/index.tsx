@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import Contact from '../components/Contact/Contact';
+import Map from '../components/Map/Map';
+import About from '../components/About/About';
 
 interface Props {
   open?: boolean;
@@ -22,7 +25,7 @@ const Content = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 150px;
+  padding-bottom: ${(p: Props) => (p.open ? 150 : 0)}px;
   header {
     display: flex;
     align-items: baseline;
@@ -37,40 +40,42 @@ const Subcontent = styled.section`
   height: ${(p: Props) => (p.open ? 400 : 0)}px;
   overflow: hidden;
   transition: all 0.25s ease-in;
+  width: 100%;
+  margin: 2rem 0;
 `;
 
 const Links = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-`;
-
-const Temp = styled.div`
-  height: 400px;
-  width: 200px;
-  background-color: blue;
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
 
 const Home = () => {
   const [view, setView] = useState('home');
-  const handleClick = (e: any) => {
-    setView(e.target.dataset.id);
-  };
+
   return (
     <Container>
-      <Content>
+      <Content open={view === 'home'}>
         <header>
-          <h1>COFESTA</h1>
+          <h1 onClick={() => setView('home')}>COFESTA</h1>
           <h3>33 w. 26th st.</h3>
         </header>
-        <Links onClick={handleClick}>
-          <a data-id="about">about</a>
-          <a data-id="map">map</a>
-          <a data-id="menu">menu</a>
-          <a data-id="contact">contact</a>
+        <Links>
+          <a onClick={() => setView('about')}>about</a>
+          <a onClick={() => setView('map')}>map</a>
+          <a onClick={() => setView('contact')}>contact</a>
+          <a href="/static/img/menu/menu.pdf" target="_blank">
+            menu
+          </a>
         </Links>
         <Subcontent open={view !== 'home'}>
-          <Temp></Temp>
+          {view === 'contact' && <Contact />}
+          <Map show={view === 'map'} />
+          {view === 'about' && <About />}
         </Subcontent>
       </Content>
     </Container>
