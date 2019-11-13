@@ -29,8 +29,12 @@ const Content = styled.main`
   header {
     display: flex;
     align-items: baseline;
+    font-family: 'Special Elite';
+    h1 {
+      font-size: 60px;
+    }
     h3 {
-      font-size: 18px;
+      font-size: 24px;
       margin: 0 0.5rem;
     }
   }
@@ -49,8 +53,17 @@ const Links = styled.div`
   justify-content: space-evenly;
   width: 100%;
   a {
+    font-size: 24px;
     cursor: pointer;
     text-decoration: underline;
+    position: relative;
+  }
+  img {
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    top: 0;
+    right: -12px;
   }
 `;
 
@@ -61,15 +74,16 @@ const Home = () => {
     <Container>
       <Content open={view === 'home'}>
         <header>
-          <h1 onClick={() => setView('home')}>COFESTA</h1>
+          <h1 onClick={() => setView('home')}>cofesta</h1>
           <h3>33 w. 26th st.</h3>
         </header>
         <Links>
           <a onClick={() => setView('about')}>about</a>
           <a onClick={() => setView('map')}>map</a>
           <a onClick={() => setView('contact')}>contact</a>
-          <a href="/static/img/menu/menu.pdf" target="_blank">
+          <a href="/img/menu/menu.pdf" target="_blank">
             menu
+            <img src="/img_569296.png"></img>
           </a>
         </Links>
         <Subcontent open={view !== 'home'}>

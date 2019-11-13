@@ -7,7 +7,7 @@ function Menu() {
     <Container>
       <p>
         Download a PDF version{' '}
-        <a href="/static/img/menu/menu.pdf" download>
+        <a href="/public/img/menu/menu.pdf" download>
           here
         </a>
       </p>

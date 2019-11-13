@@ -3,9 +3,9 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from '../utils/cssTheme';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Raleway|Cabin|Cormorant+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Special+Elite&display=swap');
 body, html{
-  font-family: 'Cabin';
+  font-family: 'Roboto Condensed';
   max-width: 100vw;
 }
 *{
