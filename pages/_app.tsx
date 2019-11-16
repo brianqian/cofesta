@@ -3,9 +3,9 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { theme } from '../utils/cssTheme';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Special+Elite&display=swap');
 body, html{
-  font-family: 'Roboto Condensed';
+  font-family: 'Open Sans Condensed';
   max-width: 100vw;
 }
 *{
@@ -14,6 +14,7 @@ body, html{
   box-sizing: border-box;
 }
 a {
+  cursor: pointer;
   color: black;
     :visited {
       color:  black;

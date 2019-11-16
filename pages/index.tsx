@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Contact from '../components/Contact/Contact';
 import Map from '../components/Map/Map';
 import About from '../components/About/About';
+import Nav from '../components/Nav/Nav';
+import Slider from '../components/Slider/Slider';
 
 interface Props {
   open?: boolean;
@@ -20,12 +22,40 @@ const Container = styled.div`
   }
 `;
 
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  > img.wine-bg {
+    width: 375px;
+    height: auto;
+    position: absolute;
+    right: -50px;
+    bottom: -220px;
+    transform: rotate(-10deg);
+  }
+  > img.coffee-bg {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: rotate(0deg);
+  }
+`;
+
 const Content = styled.main`
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: ${(p: Props) => (p.open ? 150 : 0)}px;
+  position: relative;
+  top: -15%;
+  z-index: 1;
   header {
     display: flex;
     align-items: baseline;
@@ -35,6 +65,7 @@ const Content = styled.main`
     }
     h3 {
       font-size: 24px;
+      font-family: 'Open Sans Condensed';
       margin: 0 0.5rem;
     }
   }
@@ -48,44 +79,27 @@ const Subcontent = styled.section`
   margin: 2rem 0;
 `;
 
-const Links = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  a {
-    font-size: 24px;
-    cursor: pointer;
-    text-decoration: underline;
-    position: relative;
-  }
-  img {
-    height: 12px;
-    width: 12px;
-    position: absolute;
-    top: 0;
-    right: -12px;
-  }
-`;
-
 const Home = () => {
   const [view, setView] = useState('home');
+  const [isNightMode, setIsNightMode] = useState(false);
 
   return (
     <Container>
-      <Content open={view === 'home'}>
+      <Background>
+        <img className="wine-bg" src="/img/wine.png" alt="" />
+        <img className="coffee-bg" src="/coffee.png" alt="" />
+      </Background>
+      <Content>
         <header>
-          <h1 onClick={() => setView('home')}>cofesta</h1>
-          <h3>33 w. 26th st.</h3>
-        </header>
-        <Links>
-          <a onClick={() => setView('about')}>about</a>
-          <a onClick={() => setView('map')}>map</a>
-          <a onClick={() => setView('contact')}>contact</a>
-          <a href="/img/menu/menu.pdf" target="_blank">
-            menu
-            <img src="/img_569296.png"></img>
+          <a onClick={() => setView('home')}>
+            <h1>cofesta</h1>
           </a>
-        </Links>
+          <h3>
+            A Flatiron coffeeshop by day...
+            <Slider isSelected={isNightMode} select={setIsNightMode} />
+          </h3>
+        </header>
+        <Nav setView={setView} />
         <Subcontent open={view !== 'home'}>
           {view === 'contact' && <Contact />}
           <Map show={view === 'map'} />

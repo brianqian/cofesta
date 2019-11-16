@@ -35,6 +35,7 @@ function Map(props: { show: boolean }) {
             AIzaSyCkeBgkOOiF7-HZIV88SPwBW78D6_Veaz0"
             allowFullScreen
           ></iframe>
+          <p>33 w. 26th st.</p>
         </MapContainer>
       </Content>
     </Container>
