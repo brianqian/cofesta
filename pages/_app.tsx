@@ -17,7 +17,7 @@ a {
   cursor: pointer;
   color: black;
     :visited {
-      color:  black;
+      /* color:  black; */
     }
 }
 `;

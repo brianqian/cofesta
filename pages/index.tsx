@@ -64,9 +64,11 @@ const Content = styled.main`
       font-size: 60px;
     }
     h3 {
-      font-size: 24px;
+      font-size: 20px;
       font-family: 'Open Sans Condensed';
       margin: 0 0.5rem;
+      display: flex;
+      align-items: center;
     }
   }
 `;
