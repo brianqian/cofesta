@@ -7,7 +7,15 @@ import Nav from '../components/Nav/Nav';
 import Slider from '../components/Slider/Slider';
 
 interface Props {
+  toggleNight: () => {};
+  isDark: boolean;
+}
+interface SubcontentProps {
   open?: boolean;
+}
+
+export interface NightProps {
+  isDark: boolean;
 }
 
 const Container = styled.div`
@@ -22,17 +30,24 @@ const Container = styled.div`
   }
 `;
 
-const Background = styled.div`
+const Background = styled.div<NightProps>`
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   overflow: hidden;
+  transition: 0.5s ease-out;
+  > img {
+    transition: 0.5s ease-out;
+    position: absolute;
+    height: auto;
+  }
+  > img.day-bg {
+    opacity: ${(props) => (props.isDark ? 0 : 1)};
+  }
   > img.wine-bg {
     width: 375px;
-    height: auto;
-    position: absolute;
     right: -50px;
     bottom: -220px;
     transform: rotate(-10deg);
@@ -40,11 +55,8 @@ const Background = styled.div`
   > img.coffee-bg {
     width: 100%;
     max-width: 850px;
-    height: auto;
-    position: absolute;
     bottom: 0;
     left: 0;
-    transform: rotate(0deg);
   }
 `;
 
@@ -73,23 +85,27 @@ const Content = styled.main`
   }
 `;
 
-const Subcontent = styled.section`
-  height: ${(p: Props) => (p.open ? 400 : 0)}px;
+const Subcontent = styled.section<SubcontentProps>`
+  height: ${(p) => (p.open ? 400 : 0)}px;
   overflow: hidden;
-  transition: all 0.25s ease-in;
+  transition: 0.25s ease-in;
   width: 100%;
   margin: 2rem 0;
 `;
 
-const Home = () => {
+const Home = (props: Props) => {
   const [view, setView] = useState('home');
-  const [isNightMode, setIsNightMode] = useState(false);
+  /**
+   * Components that change on night mode:
+   * Background -  image
+   * Slider - stroke and fill
+   */
 
   return (
     <Container>
-      <Background>
-        <img className="wine-bg" src="/img/wine.png" alt="" />
-        <img className="coffee-bg" src="/coffee.png" alt="" />
+      <Background isDark={props.isDark}>
+        <img className="wine-bg day-bg" src="/img/wine.png" alt="" />
+        <img className="coffee-bg day-bg" src="/coffee.png" alt="" />
       </Background>
       <Content>
         <header>
@@ -97,11 +113,11 @@ const Home = () => {
             <h1>cofesta</h1>
           </a>
           <h3>
-            A Flatiron coffeeshop by day...
-            <Slider isSelected={isNightMode} select={setIsNightMode} />
+            {props.isDark ? 'Winebar and event space by night' : 'Flatiron coffeeshop by day'}
+            <Slider select={props.toggleNight} isDark={props.isDark} />
           </h3>
         </header>
-        <Nav setView={setView} />
+        <Nav setView={setView} isDark={props.isDark} />
         <Subcontent open={view !== 'home'}>
           {view === 'contact' && <Contact />}
           <Map show={view === 'map'} />

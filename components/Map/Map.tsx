@@ -6,7 +6,6 @@ interface Props {
 
 const Container = styled.section`
   height: ${(p: Props) => (p.show ? 300 : 0)}px;
-  background-color: white;
   color: black;
   text-align: center;
   display: flex;

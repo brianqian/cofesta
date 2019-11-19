@@ -2,15 +2,23 @@ interface HexCodes {
   [index: number]: string;
 }
 
-const theme = {
-  color: {
-    white: '#EFEFF9',
-    red: '#F15C5F',
-    gray: '#3b3e3b',
-    blue: '#225371',
-    black: '#282829',
-  },
-  changeOpacity: (color: string, opacity: number) => {
+interface ThemeT {
+  [index: string]: any;
+}
+
+const darkColor = {
+  backgroundColor: 'black',
+  strokeColor: 'white',
+};
+
+const theme: ThemeT = {
+  backgroundColor: 'white',
+  strokeColor: 'black',
+  // ORIGINAL VALUE bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
+  bs: '0 12px 24px 0 rgba(0, 0, 0, 1)',
+  textFont: 'Source Sans Pro',
+  accent: 'darkorange',
+  changeOpacity: (color: string, opacity: number): string => {
     const opacityHexCodes: HexCodes = {
       0: '00',
       1: '03',
@@ -124,10 +132,6 @@ const theme = {
     yellow8: '#975A16',
     yellow9: '#744210',
   },
-  // ORIGINAL VALUE bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
-  bs: '0 12px 24px 0 rgba(0, 0, 0, 1)',
-  textFont: 'Source Sans Pro',
-  accent: 'darkorange',
 };
 
-export { theme };
+export { theme, darkColor };
