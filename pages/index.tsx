@@ -5,6 +5,7 @@ import Map from '../components/Map/Map';
 import About from '../components/About/About';
 import Nav from '../components/Nav/Nav';
 import Slider from '../components/Slider/Slider';
+import Background from '../components/Background/Background';
 
 interface Props {
   toggleNight: () => {};
@@ -12,10 +13,6 @@ interface Props {
 }
 interface SubcontentProps {
   open?: boolean;
-}
-
-export interface NightProps {
-  isDark: boolean;
 }
 
 const Container = styled.div`
@@ -30,36 +27,6 @@ const Container = styled.div`
   }
 `;
 
-const Background = styled.div<NightProps>`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  transition: 0.5s ease-out;
-  > img {
-    transition: 0.5s ease-out;
-    position: absolute;
-    height: auto;
-  }
-  > img.day-bg {
-    opacity: ${(props) => (props.isDark ? 0 : 1)};
-  }
-  > img.wine-bg {
-    width: 375px;
-    right: -50px;
-    bottom: -220px;
-    transform: rotate(-10deg);
-  }
-  > img.coffee-bg {
-    width: 100%;
-    max-width: 850px;
-    bottom: 0;
-    left: 0;
-  }
-`;
-
 const Content = styled.main`
   width: 50%;
   display: flex;
@@ -68,20 +35,23 @@ const Content = styled.main`
   position: relative;
   top: -15%;
   z-index: 1;
-  header {
+`;
+
+const HeaderLogo = styled.header`
+  display: flex;
+  align-items: baseline;
+  font-family: 'Rock Salt';
+  h1 {
+    font-size: 60px;
+  }
+  h3 {
+    font-size: 20px;
+    font-family: 'Open Sans Condensed';
+    margin: 0 0.5rem;
     display: flex;
-    align-items: baseline;
-    font-family: 'Special Elite';
-    h1 {
-      font-size: 60px;
-    }
-    h3 {
-      font-size: 20px;
-      font-family: 'Open Sans Condensed';
-      margin: 0 0.5rem;
-      display: flex;
-      align-items: center;
-    }
+    align-items: center;
+    width: 275px;
+    justify-content: space-between;
   }
 `;
 
@@ -103,12 +73,9 @@ const Home = (props: Props) => {
 
   return (
     <Container>
-      <Background isDark={props.isDark}>
-        <img className="wine-bg day-bg" src="/img/wine.png" alt="" />
-        <img className="coffee-bg day-bg" src="/coffee.png" alt="" />
-      </Background>
+      <Background isDark={props.isDark} />
       <Content>
-        <header>
+        <HeaderLogo>
           <a onClick={() => setView('home')}>
             <h1>cofesta</h1>
           </a>
@@ -116,7 +83,7 @@ const Home = (props: Props) => {
             {props.isDark ? 'Winebar and event space by night' : 'Flatiron coffeeshop by day'}
             <Slider select={props.toggleNight} isDark={props.isDark} />
           </h3>
-        </header>
+        </HeaderLogo>
         <Nav setView={setView} isDark={props.isDark} />
         <Subcontent open={view !== 'home'}>
           {view === 'contact' && <Contact />}

@@ -2,13 +2,13 @@ import App from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 // import { theme, darkColor } from '../utils/cssTheme';
 
-const theme = { backgroundColor: 'white', strokeColor: 'black' };
+const lightTheme = { backgroundColor: 'white', strokeColor: 'black' };
 const darkTheme = { backgroundColor: 'black', strokeColor: 'white' };
 
-export type ThemeType = typeof theme;
+export type ThemeType = typeof lightTheme;
 
 const GlobalStyle = createGlobalStyle<{ theme: ThemeType }>`
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Special+Elite|Rock+Salt&display=swap');
 body, html{
   font-family: 'Open Sans Condensed';
   max-width: 100vw;
@@ -23,7 +23,10 @@ body, html{
 }
 a {
   cursor: pointer;
-  transition: .35s ease-in;
+  transition: .25s ease-in;
+    :visited {
+      color: ${(p) => p.theme.strokeColor}
+    }
     :hover {
       color: ${(p) => p.theme.strokeColor};
     }
@@ -34,6 +37,10 @@ interface MyProps {}
 
 interface MyState {
   isDark: boolean;
+  theme: {
+    light: ThemeType;
+    dark: ThemeType;
+  };
 }
 
 export default class MyApp extends App<MyProps, MyState> {
@@ -44,10 +51,10 @@ export default class MyApp extends App<MyProps, MyState> {
   //   }
   //   return { pageProps: { ...pageProps } };
   //
-  state = {
+  state: MyState = {
     theme: {
-      light: { backgroundColor: 'white', strokeColor: 'black' },
-      dark: { backgroundColor: 'black', strokeColor: 'white' },
+      light: lightTheme,
+      dark: darkTheme,
     },
     isDark: false,
   };

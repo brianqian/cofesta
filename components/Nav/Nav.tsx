@@ -32,7 +32,7 @@ function Nav({ setView, isDark }: P) {
   return (
     <Container isDark={isDark}>
       <a onClick={() => setView('about')}>about</a>
-      <a onClick={() => setView('map')}>map</a>
+      <a onClick={() => setView('map')}>location</a>
       <a onClick={() => setView('contact')}>contact</a>
       <a href="/img/menu/menu.pdf" target="_blank">
         menu
