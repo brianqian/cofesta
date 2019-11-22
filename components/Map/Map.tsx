@@ -23,8 +23,7 @@ function Map(props: { show: boolean }) {
       <iframe
         width="550"
         height="550"
-        src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJsZFSxqVZwokRnVkkCjyjDSA&key=
-            AIzaSyCkeBgkOOiF7-HZIV88SPwBW78D6_Veaz0"
+        src={`https://www.google.com/maps/embed/v1/place?q=place_id:ChIJsZFSxqVZwokRnVkkCjyjDSA&key=${process.env.GOOGLE_API_KEY}`}
         allowFullScreen
       ></iframe>
       <p>33 W 26th St, New York, NY 10010</p>

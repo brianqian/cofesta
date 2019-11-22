@@ -2,8 +2,8 @@ import App from 'next/app';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 // import { theme, darkColor } from '../utils/cssTheme';
 
-const lightTheme = { backgroundColor: 'white', strokeColor: 'black' };
-const darkTheme = { backgroundColor: 'black', strokeColor: 'white' };
+const lightTheme = { backgroundColor: 'white', strokeColor: '#000111' };
+const darkTheme = { backgroundColor: '#050200', strokeColor: 'white' };
 
 export type ThemeType = typeof lightTheme;
 

@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon",
-    "build": "next build && tsc --project tsconfig.server.json",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
     "test": "jest"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
+    "@types/next": "^9.0.0",
     "dotenv": "^8.1.0",
     "dotenv-webpack": "^1.7.0",
     "express": "^4.17.1",

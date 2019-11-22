@@ -21,12 +21,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
   },
-  "exclude": ["dist", ".next", "out", "next.config.js"],
-  "include": [
-    "typings/next-env.d.ts",
-    "typings/styled.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "public/static/cssTheme.js"
-  ]
+  "exclude": ["dist", ".next", "out", "next.config.js, node_modules"],
+  "include": ["typings/next-env.d.ts", "typings/styled.d.ts", "**/*.ts", "**/*.tsx"]
 }

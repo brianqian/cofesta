@@ -44,7 +44,7 @@ const Container = styled.div<BackgroundProps>`
     transform: rotate(-10deg);
   }
   > img.coffee-bg {
-    width: 100%;
+    width: 50%;
     max-width: 850px;
     bottom: 0;
     left: 0;
@@ -62,12 +62,12 @@ const Container = styled.div<BackgroundProps>`
 function Background({ isDark }: BackgroundProps) {
   return (
     <Container isDark={isDark}>
-      <img className="wine-bg day-bg" src="/img/wine.png" alt="" />
-      <img className="coffee-bg day-bg" src="/img/coffee.png" alt="" />
+      <img className="wine-bg day-bg" src="/img/wine.png" alt="wine" />
+      <img className="coffee-bg day-bg" src="/img/coffee.png" alt="coffee" />
       <img
         className={`dark-wine-bg night-bg ${isDark && 'animate-wine'}`}
         src="/img/dark-wine.png"
-        alt=""
+        alt="wine"
       />
     </Container>
   );

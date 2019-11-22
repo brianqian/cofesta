@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NightProps } from '../../pages';
 import Share from '../Icons/Share';
 
 interface P {
@@ -8,7 +7,7 @@ interface P {
   isDark: boolean;
 }
 
-const Container = styled.div<NightProps>`
+const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 100%;
@@ -30,7 +29,7 @@ const StyledShare = styled(Share)`
 
 function Nav({ setView, isDark }: P) {
   return (
-    <Container isDark={isDark}>
+    <Container>
       <a onClick={() => setView('about')}>about</a>
       <a onClick={() => setView('map')}>location</a>
       <a onClick={() => setView('contact')}>contact</a>

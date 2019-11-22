@@ -4,6 +4,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   // useFileSystemPublicRoutes: false,
+  target: 'serverless',
   webpack: (config) => {
     config.plugins = config.plugins || [];
     config.node = {

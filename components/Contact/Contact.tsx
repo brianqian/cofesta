@@ -21,7 +21,7 @@ const Form = styled.form`
       padding-left: 3px;
     }
   }
-  input[type='submit'] {
+  button[type='submit'] {
     border: 2px solid black;
   }
   textarea {
@@ -32,14 +32,29 @@ const Form = styled.form`
 
 function Contact() {
   const [data, setData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState({
+    sending: false,
+    sent: false,
+    msg: '',
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(data);
+    setStatus({ ...status, sending: true });
+    const resp = await fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    const text = await resp.text();
+    setStatus({ ...status, sending: false, msg: text });
+    setData({ name: '', email: '', message: '' });
   };
 
   const handleChange = (e: any) => {
-    const { value, name } = e.target;
+    const { value, name } = e.currentTarget;
     setData({ ...data, [name]: value });
   };
 
@@ -60,9 +75,12 @@ function Contact() {
           type="email"
           placeholder="Email: "
         />
-        <textarea onChange={handleChange} value={data.message} name="message" />
-        <input type="submit" />
+        <textarea onChange={handleChange} value={data.message} name="message" required />
+        <button type="submit" disabled={status.sent}>
+          {!status.sending ? (!status.sent ? 'Submit' : 'Sent!') : 'Sending...'}
+        </button>
       </Form>
+      <p>{status.msg}</p>
     </Container>
   );
 }

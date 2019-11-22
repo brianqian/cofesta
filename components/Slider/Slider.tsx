@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NightProps } from '../../pages';
 
 interface P {
   select: any;
@@ -12,7 +11,7 @@ interface MarkerProps {
   isSelected: boolean;
 }
 
-const Container = styled.div<NightProps>`
+const Container = styled.div<{ isDark: boolean }>`
   width: 40px;
   height: 20px;
   border: 2px solid ${(props) => (props.isDark ? 'white' : 'black')};
@@ -29,7 +28,9 @@ const Marker = styled.svg<MarkerProps>`
   transition: 0.35s ease-in;
   position: absolute;
   left: 3px;
-  ${(props) => props.isSelected && 'transform: translateX(19px);'} /* right: 3px; */
+  ${(props) => props.isSelected && 'transform: translateX(19px);'}
+  ${Container}:hover & {
+  }
 `;
 
 function Slider({ select, isDark = false }: P) {
