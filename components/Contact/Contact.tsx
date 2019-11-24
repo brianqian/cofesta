@@ -79,6 +79,9 @@ function Contact() {
         <button type="submit" disabled={status.sent}>
           {!status.sending ? (!status.sent ? 'Submit' : 'Sent!') : 'Sending...'}
         </button>
+        <p>
+          All messages sent to <a href="mailto:info@cofesta.nyc">info@cofesta.nyc</a>
+        </p>
       </Form>
       <p>{status.msg}</p>
     </Container>

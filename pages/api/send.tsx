@@ -6,7 +6,7 @@ export default async function(req: NextApiRequest, res: NextApiResponse) {
   const { name, email, message } = req.body;
 
   const content = {
-    to: 'qian.brian@gmail.com',
+    to: 'info@cofesta.nyc',
     from: email,
     subject: `New Message From - ${name}`,
     text: message,

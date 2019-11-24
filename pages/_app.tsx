@@ -24,9 +24,7 @@ body, html{
 a {
   cursor: pointer;
   transition: .25s ease-in;
-    :visited {
-      color: ${(p) => p.theme.strokeColor}
-    }
+  color: ${(p) => p.theme.strokeColor};
     :hover {
       color: ${(p) => p.theme.strokeColor};
     }

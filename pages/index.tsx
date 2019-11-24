@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 import Contact from '../components/Contact/Contact';
 import Map from '../components/Map/Map';
@@ -73,6 +74,9 @@ const Home = (props: Props) => {
 
   return (
     <Container>
+      <Head>
+        <title>CofestaNYC</title>
+      </Head>
       <Background isDark={props.isDark} />
       <Content>
         <HeaderLogo>
@@ -84,7 +88,7 @@ const Home = (props: Props) => {
             <Slider select={props.toggleNight} isDark={props.isDark} />
           </h3>
         </HeaderLogo>
-        <Nav setView={setView} isDark={props.isDark} />
+        <Nav setView={setView} isDark={props.isDark} view={view} />
         <Subcontent open={view !== 'home'}>
           {view === 'contact' && <Contact />}
           <Map show={view === 'map'} />

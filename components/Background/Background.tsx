@@ -32,7 +32,6 @@ const Container = styled.div<BackgroundProps>`
     transition: 0.5s ease-out;
     position: absolute;
     height: auto;
-    width: ${(p) => p.w || ''}px;
   }
   > img.day-bg {
     opacity: ${(props) => (props.isDark ? 0 : 1)};
@@ -45,7 +44,7 @@ const Container = styled.div<BackgroundProps>`
   }
   > img.coffee-bg {
     width: 50%;
-    max-width: 850px;
+    max-width: 700px;
     bottom: 0;
     left: 0;
   }
