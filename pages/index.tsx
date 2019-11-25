@@ -66,11 +66,6 @@ const Subcontent = styled.section<SubcontentProps>`
 
 const Home = (props: Props) => {
   const [view, setView] = useState('home');
-  /**
-   * Components that change on night mode:
-   * Background -  image
-   * Slider - stroke and fill
-   */
 
   return (
     <Container>

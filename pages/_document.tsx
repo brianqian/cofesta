@@ -31,6 +31,20 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w, d, s, l, i) {
+              w[l] = w[l] || [];
+              w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+              var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+              j.async = true;
+              j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+              f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-WTS9KDB')`,
+            }}
+          ></script>
           <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
           <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
@@ -40,6 +54,14 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
         </Head>
         <body>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-WTS9KDB"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            ></iframe>
+          </noscript>
           <Main />
           <NextScript />
         </body>
